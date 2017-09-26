@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="https://npmcdn.com/react@latest/dist/react-with-addons.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="https://npmcdn.com/react-dom@latest/dist/react-dom.js"></script>
+    
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>React Data Grid Editable Example Fiddle</title>
+
+  
+    
+
+
+<script type="application/javascript;version=1.7" language="JavaScript 1.7">//<![CDATA[
+
+
+
+const Example = React.createClass({
+  getInitialState() {
+    this._columns = [
+      {
+        key: 'id',
+        name: 'ID',
+        width: 80
+      },
+      {
+        key: 'task',
+        name: 'Title',
+        editable: true
+      },
+      {
+        key: 'priority',
+        name: 'Priority',
+        editable: true
+      },
+      {
+        key: 'issueType',
+        name: 'Issue Type',
+        editable: true
+      },
+      {
+        key: 'complete',
+        name: '% Complete',
+        editable: true
+      },
+      {
+        key: 'startDate',
+        name: 'Start Date',
+        editable: true
+      },
+      {
+        key: 'completeDate',
+        name: 'Expected Complete',
+        editable: true
+      }
+    ];
+
+    return { rows: this.createRows(1000) };
+  },
+
+  getRandomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
+  },
+
+  createRows(numberOfRows) {
+    let rows = [];
+    for (let i = 1; i < numberOfRows; i++) {
+      rows.push({
+        id: i,
+        task: 'Task ' + i,
+        complete: Math.min(100, Math.round(Math.random() * 110)),
+        priority: ['Critical', 'High', 'Medium', 'Low'][Math.floor((Math.random() * 3) + 1)],
+        issueType: ['Bug', 'Improvement', 'Epic', 'Story'][Math.floor((Math.random() * 3) + 1)],
+        startDate: this.getRandomDate(new Date(2015, 3, 1), new Date()),
+        completeDate: this.getRandomDate(new Date(), new Date(2016, 0, 1))
+      });
+    }
+    return rows;
+  },
+
+  rowGetter(i) {
+    return this.state.rows[i];
+  },
+
+  handleGridRowsUpdated({ fromRow, toRow, updated }) {
+    let rows = this.state.rows;
+
+    for (let i = fromRow; i <= toRow; i++) {
+      let rowToUpdate = rows[i];
+      let updatedRow = React.addons.update(rowToUpdate, {$merge: updated});
+      rows[i] = updatedRow;
+    }
+
+    this.setState({ rows });
+  },
+
+  render() {
+    return  (
+      <ReactDataGrid
+        enableCellSelect={true}
+        columns={this._columns}
+        rowGetter={this.rowGetter}
+        rowsCount={this.state.rows.length}
+        minHeight={500}
+        onGridRowsUpdated={this.handleGridRowsUpdated} />);
+  }
+});
+
+ReactDOM.render(
+  <Example />,
+  document.getElementById('container')
+);
+
+
+//]]> 
+</script>
+
+  
+</head>
+
+<body>
+  <script src="https://facebook.github.io/react/js/jsfiddle-integration-babel.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/react-data-grid/dist/react-data-grid.min.js"></script>
+
+<div id="container">
+    <!-- This element's contents will be replaced with your component. -->
+</div>
+
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "k7tfnw1n"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+

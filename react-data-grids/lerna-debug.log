@@ -1,0 +1,12 @@
+lerna(verbose) GitUtilities.isInitialized    ()
+lerna(verbose) GitUtilities.isInitialized    () => true
+lerna(verbose) GitUtilities.getTopLevelDirectory()
+lerna(verbose) GitUtilities.getTopLevelDirectory() => "/Library/WebServer/Documents"
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/lerna.json")
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/lerna.json") => false
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/package.json")
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/package.json") => false
+lerna(info)    Lerna v2.0.0-beta.34
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/package.json")
+lerna(verbose) FileSystemUtilities.existsSync("/Library/WebServer/Documents/package.json") => false
+lerna(warn)    `package.json` does not exist, have you run `lerna init`?
