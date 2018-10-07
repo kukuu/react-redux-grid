@@ -33,3 +33,6 @@ start-dev-single-page: "node_modules/.bin/http-server src/static",
 start-dev-hmr: "node_modules/.bin/webpack-dev-server --progress --inline --hot --open",
 build: "cross-env NODE_ENV=production node_modules/.bin/webpack -p"
 
+
+###  See enhanced application here:
+https://github.com/kukuu/worldlabs/tree/master/isomorphic-react/judo-heroes-2
